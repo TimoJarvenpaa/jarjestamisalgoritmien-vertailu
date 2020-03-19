@@ -26,3 +26,6 @@ hs_err_pid*
 /Sovellus/.gradle/
 /Sovellus/build/
 .gradle/
+
+# NetBeans
+/Sovellus/nbproject/
