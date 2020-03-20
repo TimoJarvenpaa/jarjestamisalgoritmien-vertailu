@@ -14,6 +14,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import util.RandomArrayGenerator;
 
+/**
+ * Sovelluksen graafisesta käyttöliittymästä vastaava luokka.
+ */
 public class App extends Application {
 
     @Override
@@ -23,6 +26,7 @@ public class App extends Application {
         VBox arrayOptions = new VBox(5);
         VBox repeatOptions = new VBox(5);
 
+        // Järjestettävän taulukon pituuden valinta
         ToggleGroup arrayLength = new ToggleGroup();
         Text arrayTitle = new Text("Array length");
 
@@ -41,6 +45,7 @@ public class App extends Application {
         
         arrayOptions.getChildren().addAll(arrayTitle, rb1, rb2, rb3);
         
+        // Taulukon järjestämiskertojen lukumäärän valinta
         ToggleGroup repeats = new ToggleGroup();
         Text repeatsTitle = new Text("Repeats");
         
@@ -63,17 +68,19 @@ public class App extends Application {
         
         Button button = new Button("Compare");
 
-        CheckBox one, two;
+        // Järjestämisalgoritmien valinta
+        CheckBox ins, bub;
 
-        one = new CheckBox("Insertion");
-        two = new CheckBox("Bubble");
+        ins = new CheckBox("Insertion");
+        bub = new CheckBox("Bubble");
 
         TextArea ta = new TextArea();
 
-        layout.getChildren().addAll(options, one, two, ta, button);
+        layout.getChildren().addAll(options, ins, bub, ta, button);
 
         Scene scene = new Scene(layout);
 
+        // Vertailunapin tapahtumankäsittelijä
         button.setOnAction(event -> {
 
             ta.clear();
@@ -85,13 +92,17 @@ public class App extends Application {
 
             int[] arrayToSort = r.getRandomArray();
 
-            if (one.isSelected()) {
-                InsertionSort insertion = new InsertionSort(arrayToSort.clone(), selectedRepeats);
+            if (ins.isSelected()) {
+                int[] copiedArray = new int[arrayToSort.length];
+                System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
+                InsertionSort insertion = new InsertionSort(copiedArray, selectedRepeats);
                 ta.appendText("Insertion sort: " + insertion.getAverageTime() + " ns\n");
             }
 
-            if (two.isSelected()) {
-                BubbleSort bubble = new BubbleSort(arrayToSort.clone(), selectedRepeats);
+            if (bub.isSelected()) {
+                int[] copiedArray = new int[arrayToSort.length];
+                System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
+                BubbleSort bubble = new BubbleSort(copiedArray, selectedRepeats);
                 ta.appendText("Bubble sort: " + bubble.getAverageTime() + " ns\n");
             }
 
