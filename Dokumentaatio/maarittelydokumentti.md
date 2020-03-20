@@ -2,20 +2,24 @@
 
 ## Aihe ja työn laajuus
 
-Harjoitustyöni tavoitteena on toteuttaa Javalla sovellus, jonka avulla on mahdollista vertailla eri järjestämisalgoritmien aikavaativuuksia mittaamalla satunnaisessa järjestyksessä olevan taulukon järjestämiseen käytettyä aikaa. Tarkoituksenani on luoda sovellukselle yksinkertainen graafinen käyttöliittymä, jonka kautta käyttäjä voi valita vähintään kaksi järjestämisalgoritmia, joille vertailu ja tulosten visualisointi suoritetaan.
+Harjoitustyöni tavoitteena on toteuttaa Javalla sovellus, jonka avulla on mahdollista vertailla eri järjestämisalgoritmien aikavaativuuksia mittaamalla kokonaisulukuja satunnaisessa järjestyksessä sisältävän taulukon järjestämiseen käytettyä aikaa. Tarkoituksenani on luoda sovellukselle yksinkertainen graafinen käyttöliittymä, jonka kautta käyttäjä voi valita useampia järjestämisalgoritmeja, joille vertailu ja tulosten visualisointi suoritetaan.
 
 ## Käytettävät algoritmit ja tietorakenteet
 
 Lähtökohtana on toteuttaa itse ainakin seuraavat järjestämisalgoritmit:
 
-* Lisäysjärjestäminen
-* Kuplajärjestäminen
-* Lomitusjärjestäminen
-* Pikajärjestäminen
+* Lisäysjärjestäminen (Insertion sort)
+* Kuplajärjestäminen (Bubble sort)
+* Lomitusjärjestäminen (Merge sort)
+* Pikajärjestäminen (Quicksort)
+* Laskemisjärjestäminen (Counting sort)
+* Kantalukujärjestäminen (Radix sort)
+* Introsort
+* Timsort
 
-Edellä mainittujen algoritmien toteutuksen jälkeen tarkoituksenani on lisätä sovellukseen valittavaksi muitakin järjestämisalgoritmeja, kuten esimerkiksi kekojärjestämisen, ja niiden mahdollisesti tarvitsemat tietorakenteet. En osaa vielä arvioida kuinka paljon aikaa pelkkien perustoiminnallisuuksien toteutus vie, joten en tiedä vielä, montako erilaista järjestämisalgoritmia lopullisessa sovelluksessa on valittavissa.
+Edellä mainittujen algoritmien toteutuksen jälkeen tarkoituksenani on tarvittaessa lisätä sovellukseen valittavaksi muitakin järjestämisalgoritmeja, kuten esimerkiksi kekojärjestämisen, ja niiden mahdollisesti tarvitsemat tietorakenteet. En osaa vielä arvioida kuinka paljon aikaa pelkkien perustoiminnallisuuksien toteutus vie, joten en tiedä vielä, montako erilaista järjestämisalgoritmia lopullisessa sovelluksessa on valittavissa.
 
-Valitsin edellä listatut algoritmit sovelluksen lähtökohdaksi, sillä lisäys- ja kuplajärjestämisellä sekä toisaalta lomitus- ja pikajärjestämisellä on keskenään samanlaiset keskimääräiset aikavaativuudet, minkä vuoksi on mielenkiintoista nähdä ilmenevätkö nämä teoreettiset yhtäläisyydet myös itse toteutetuilla algoritmeilla.
+Edellä listatut algoritmit edustavat erilaisia lähestymistapoja järjestämiseen, joten niiden toteutus ja suorituskykyvertailu voi osoittautua mielenkiintoiseksi.
 
 ## Ohjelman käyttämät syötteet ja toiminta
 
@@ -27,6 +31,10 @@ Tarkoituksena on, että ennen vertailtavien järjestämisalgoritmien valintaa k�
 * Kuplajärjestäminen (O(n²))
 * Lomitusjärjestäminen (O(n log n))
 * Pikajärjestäminen (O(n log n))
+* Laskemisjärjestäminen (O(n + r))
+* Kantalukujärjestäminen (O(n*k/d))
+* Introsort (O(n log n))
+* Timsort (O(n log n))
 
 ## Lähteet
 
