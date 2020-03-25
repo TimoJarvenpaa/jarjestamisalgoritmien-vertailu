@@ -95,14 +95,14 @@ public class App extends Application {
             if (ins.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
-                InsertionSort insertion = new InsertionSort(copiedArray, selectedRepeats);
+                Sort insertion = new InsertionSort(copiedArray, selectedRepeats);
                 ta.appendText("Insertion sort: " + insertion.getAverageTime() + " ns\n");
             }
 
             if (bub.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
-                BubbleSort bubble = new BubbleSort(copiedArray, selectedRepeats);
+                Sort bubble = new BubbleSort(copiedArray, selectedRepeats);
                 ta.appendText("Bubble sort: " + bubble.getAverageTime() + " ns\n");
             }
 

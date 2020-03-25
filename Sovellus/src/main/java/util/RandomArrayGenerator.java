@@ -13,7 +13,9 @@ public class RandomArrayGenerator {
     }
 
     /**
-     * Metodi palauttaa taulukon, joka sisältää satunnaisia kokonaislukuja yhden ja taulukon pituuden väliltä.
+     * Metodi palauttaa taulukon, joka sisältää satunnaisia kokonaislukuja yhden
+     * ja taulukon pituuden väliltä.
+     *
      * @return taulukko, joka sisältää satunnaisia kokonaislukuja
      */
     public int[] getRandomArray() {
@@ -25,9 +27,10 @@ public class RandomArrayGenerator {
 
     /**
      * Metodi palauttaa satunnaisen kokonaisluvun annetulta väliltä.
+     *
      * @param min alaraja
      * @param max yläraja
-     * @return 
+     * @return
      */
     public int getRandomInt(int min, int max) {
         int randomInt = ThreadLocalRandom.current().nextInt(min, max + 1);

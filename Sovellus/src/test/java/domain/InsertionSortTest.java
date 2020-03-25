@@ -8,22 +8,25 @@ import util.RandomArrayGenerator;
 
 public class InsertionSortTest {
 
-    InsertionSort insertion;
+    Sort insertion;
     RandomArrayGenerator r;
     int[] arrayToSort;
+    int[] copiedArray;
 
     @Before
     public void setUp() {
         r = new RandomArrayGenerator(1000);
         arrayToSort = r.getRandomArray();
-        insertion = new InsertionSort(arrayToSort.clone(), 1);
+        copiedArray = new int[arrayToSort.length];
+        System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
+        insertion = new InsertionSort(copiedArray, 1);
 
     }
 
     @Test
     public void randomArrayIsSortedCorrectly() {
-        int[] expectedResult = arrayToSort.clone();
-        Arrays.sort(expectedResult);
+        Arrays.sort(arrayToSort);
+        int[] expectedResult = arrayToSort;
 
         insertion.sort();
         int[] result = insertion.getArray();

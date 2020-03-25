@@ -1,17 +1,15 @@
 package domain;
 
-public class BubbleSort implements Sort {
-
-    private int[] array;
-    private int repeats;
+public class BubbleSort extends Sort {
 
     public BubbleSort(int[] array, int repeats) {
-        this.array = array;
-        this.repeats = repeats;
+        super(array, repeats);
     }
 
     /**
-     * Metodi järjestää taulukon käyttäen kuplajärjestämistä ja mittaa järjestämiseen kuluneen ajan nanosekunteina
+     * Metodi järjestää taulukon käyttäen kuplajärjestämistä ja mittaa
+     * järjestämiseen kuluneen ajan nanosekunteina
+     *
      * @return taulukon järjestämiseen kulunut aika nanosekunteina
      */
     @Override
@@ -28,26 +26,5 @@ public class BubbleSort implements Sort {
         }
         long endTime = System.nanoTime();
         return endTime - startTime;
-    }
-
-    public long getAverageTime() {
-        long totalTime = 0;
-        int[] unsortedArray = new int[this.array.length];
-        System.arraycopy(this.array, 0, unsortedArray, 0, this.array.length);
-        for (int i = 0; i < this.repeats; i++) {
-            totalTime += sort();
-            this.restoreOriginalArray(unsortedArray);
-        }
-        return totalTime / repeats;
-    }
-
-    public int[] getArray() {
-        return array;
-    }
-
-    public void restoreOriginalArray(int[] unsortedArray) {
-        int[] copiedArray = new int[this.array.length];
-        System.arraycopy(unsortedArray, 0, copiedArray, 0, unsortedArray.length);
-        this.array = copiedArray;
     }
 }
