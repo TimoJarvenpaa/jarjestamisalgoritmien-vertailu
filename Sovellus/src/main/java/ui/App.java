@@ -69,14 +69,15 @@ public class App extends Application {
         Button button = new Button("Compare");
 
         // Järjestämisalgoritmien valinta
-        CheckBox ins, bub;
+        CheckBox ins, bub, mer;
 
         ins = new CheckBox("Insertion");
         bub = new CheckBox("Bubble");
+        mer = new CheckBox("Merge");
 
         TextArea ta = new TextArea();
 
-        layout.getChildren().addAll(options, ins, bub, ta, button);
+        layout.getChildren().addAll(options, ins, bub, mer, ta, button);
 
         Scene scene = new Scene(layout);
 
@@ -104,6 +105,13 @@ public class App extends Application {
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort bubble = new BubbleSort(copiedArray, selectedRepeats);
                 ta.appendText("Bubble sort: " + bubble.getAverageTime() + " ns\n");
+            }
+            
+            if (mer.isSelected()) {
+                int[] copiedArray = new int[arrayToSort.length];
+                System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
+                Sort merge = new MergeSort(copiedArray, selectedRepeats);
+                ta.appendText("Merge sort: " + merge.getAverageTime() + " ns\n");
             }
 
         });

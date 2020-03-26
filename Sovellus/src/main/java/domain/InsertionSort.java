@@ -2,6 +2,10 @@ package domain;
 
 public class InsertionSort extends Sort {
 
+    /**
+     * @param array järjestettävä taulukko
+     * @param repeats taulukon järjestyskertojen lukumäärä
+     */
     public InsertionSort(int[] array, int repeats) {
         super(array, repeats);
     }

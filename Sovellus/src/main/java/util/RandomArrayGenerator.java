@@ -7,6 +7,10 @@ public class RandomArrayGenerator {
     private int length;
     private int[] array;
 
+    /**
+     *
+     * @param length generoitavan taulukon pituus
+     */
     public RandomArrayGenerator(int length) {
         this.length = length;
         this.array = new int[length];

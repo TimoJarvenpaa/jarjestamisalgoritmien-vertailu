@@ -2,6 +2,10 @@ package domain;
 
 public class BubbleSort extends Sort {
 
+    /**
+     * @param array järjestettävä taulukko
+     * @param repeats taulukon järjestyskertojen lukumäärä
+     */
     public BubbleSort(int[] array, int repeats) {
         super(array, repeats);
     }

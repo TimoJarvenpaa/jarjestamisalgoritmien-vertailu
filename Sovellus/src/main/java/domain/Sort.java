@@ -14,6 +14,11 @@ public class Sort {
         this.repeats = repeats;
     }
 
+    /**
+     * Tavallinen getterimetodi yksikkötestien käyttöön.
+     *
+     * @return järjestämisessä käytettävä taulukko
+     */
     public int[] getArray() {
         return array;
     }
