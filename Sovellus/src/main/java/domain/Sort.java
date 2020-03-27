@@ -66,4 +66,17 @@ public class Sort {
         System.arraycopy(unsortedArray, 0, copiedArray, 0, unsortedArray.length);
         this.array = copiedArray;
     }
+
+    /**
+     * Metodi vaihtaa kahden alkion paikan annetussa taulukossa.
+     *
+     * @param array taulukko, jossa vaihto tulee tehdä
+     * @param index1 ensimmäisen vaihdettavan alkion indeksi
+     * @param index2 toisen vaihfettavan alkion indeksi
+     */
+    public void swap(int[] array, int index1, int index2) {
+        int tmp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = tmp;
+    }
 }

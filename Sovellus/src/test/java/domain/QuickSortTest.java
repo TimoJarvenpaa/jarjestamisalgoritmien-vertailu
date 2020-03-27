@@ -7,9 +7,9 @@ import org.junit.Before;
 import org.junit.Test;
 import util.RandomArrayGenerator;
 
-public class BubbleSortTest {
+public class QuickSortTest {
 
-    Sort bubble;
+    Sort quick;
     RandomArrayGenerator rand;
     int[] arrayToSort;
     int[] copiedArray;
@@ -20,7 +20,7 @@ public class BubbleSortTest {
         arrayToSort = rand.getRandomArray();
         copiedArray = new int[arrayToSort.length];
         System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
-        bubble = new BubbleSort(copiedArray, 1);
+        quick = new QuickSort(copiedArray, 1);
 
     }
 
@@ -29,8 +29,8 @@ public class BubbleSortTest {
         Arrays.sort(arrayToSort);
         int[] expectedResult = arrayToSort;
 
-        bubble.sort();
-        int[] result = bubble.getArray();
+        quick.sort();
+        int[] result = quick.getArray();
 
         assertTrue(Arrays.equals(expectedResult, result));
     }

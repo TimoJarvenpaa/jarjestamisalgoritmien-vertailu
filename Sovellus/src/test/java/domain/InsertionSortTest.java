@@ -1,22 +1,23 @@
 package domain;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import util.RandomArrayGenerator;
 
 public class InsertionSortTest {
 
     Sort insertion;
-    RandomArrayGenerator r;
+    RandomArrayGenerator rand;
     int[] arrayToSort;
     int[] copiedArray;
 
     @Before
     public void setUp() {
-        r = new RandomArrayGenerator(1000);
-        arrayToSort = r.getRandomArray();
+        rand = new RandomArrayGenerator(1000);
+        arrayToSort = rand.getRandomArray();
         copiedArray = new int[arrayToSort.length];
         System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
         insertion = new InsertionSort(copiedArray, 1);
