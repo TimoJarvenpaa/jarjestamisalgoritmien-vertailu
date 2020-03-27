@@ -11,7 +11,7 @@ Lähtökohtana on toteuttaa itse ainakin seuraavat järjestämisalgoritmit:
 * Lisäysjärjestäminen (Insertion sort)
 * Kuplajärjestäminen (Bubble sort)
 * Lomitusjärjestäminen (Merge sort)
-* Pikajärjestäminen (Quicksort)
+* Pikajärjestäminen (Quicksort) (*Median-of-three)
 * Laskemisjärjestäminen (Counting sort)
 * Kantalukujärjestäminen (Radix sort)
 * Introsort
@@ -27,14 +27,16 @@ Tarkoituksena on, että ennen vertailtavien järjestämisalgoritmien valintaa k�
 
 ## Tavoitteena olevat aikavaativuudet
 
-* Lisäysjärjestäminen (O(n²))
-* Kuplajärjestäminen (O(n²))
-* Lomitusjärjestäminen (O(n log n))
-* Pikajärjestäminen (O(n log n))
-* Laskemisjärjestäminen (O(n + r))
-* Kantalukujärjestäminen (O(n*k/d))
-* Introsort (O(n log n))
-* Timsort (O(n log n))
+|Algoritmi|Keskimääräinen tapaus|Pahin tapaus|
+|---|---|---|
+|Lisäysjärjestäminen|O(n²)|O(n²)|
+|Kuplajärjestäminen|O(n²)|O(n²)|
+|Lomitusjärjestäminen|O(n log n)|O(n log n)|
+|Pikajärjestäminen|O(n log n)|O(n²)|
+|Laskemisjärjestäminen|O(n + r)|O(n + r)|
+|Kantalukujärjestäminen|O(n * k/d)|O(n * k/d)|
+|Introsort|O(n log n)|O(n log n)|
+|Timsort|O(n log n)|O(n log n)|
 
 ## Lähteet
 
