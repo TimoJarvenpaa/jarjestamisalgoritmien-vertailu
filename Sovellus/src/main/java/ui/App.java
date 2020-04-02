@@ -69,16 +69,17 @@ public class App extends Application {
         Button button = new Button("Compare");
 
         // Järjestämisalgoritmien valinta
-        CheckBox ins, bub, mer, qui;
+        CheckBox ins, bub, mer, qui, cou;
 
         ins = new CheckBox("Insertion");
         bub = new CheckBox("Bubble");
         mer = new CheckBox("Merge");
         qui = new CheckBox("Quick (Median-of-three)");
+        cou = new CheckBox("Counting");
 
         TextArea ta = new TextArea();
 
-        layout.getChildren().addAll(options, ins, bub, mer, qui, ta, button);
+        layout.getChildren().addAll(options, ins, bub, mer, qui, cou, ta, button);
 
         Scene scene = new Scene(layout);
 
@@ -120,6 +121,13 @@ public class App extends Application {
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort quick = new QuickSort(copiedArray, selectedRepeats);
                 ta.appendText("Quick sort: " + quick.getAverageTime() + " ns\n");
+            }
+            
+            if (cou.isSelected()) {
+                int[] copiedArray = new int[arrayToSort.length];
+                System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
+                Sort count = new CountingSort(copiedArray, selectedRepeats);
+                ta.appendText("Counting sort: " + count.getAverageTime() + " ns\n");
             }
 
         });

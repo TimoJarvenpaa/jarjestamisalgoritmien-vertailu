@@ -24,6 +24,14 @@ public class Sort {
     }
 
     /**
+     * Asettaa parametrina olevan taulukon uudeksi oliomuuttujan arvoksi.
+     * @param array uusi taulukko
+     */
+    public void setArray(int[] array) {
+        this.array = array;
+    }
+
+    /**
      * Eri järjestämisalgoritmit on toteutettu omina aliluokkinaan, jotka
      * korvaavat tämän toteutuksen omalla metodillaan.
      *
