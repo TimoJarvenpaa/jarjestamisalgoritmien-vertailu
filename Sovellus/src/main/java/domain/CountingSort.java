@@ -19,19 +19,17 @@ public class CountingSort extends Sort {
     @Override
     public long sort() {
         long startTime = System.nanoTime();
-        this.setArray(countingSort(this.array));
+        countingSort(this.array);
         long endTime = System.nanoTime();
         return endTime - startTime;
     }
 
     /**
      * Metodi suorittaa laskemisjärjestämisen parametrina annetulle taulukolle
-     * ja palauttaa uuden järjestetyn taulukon.
      *
      * @param array järjestettävä taulukko
-     * @return järjestetty taulukko
      */
-    public int[] countingSort(int[] array) {
+    public void countingSort(int[] array) {
         int k = maxValue(array);
         int[] count = new int[k + 1];
 
@@ -52,24 +50,9 @@ public class CountingSort extends Sort {
             output[count[array[i]]] = array[i];
             count[array[i]]++;
         }
-
-        return output;
-    }
-
-    /**
-     * Metodi palauttaa parametrina annetun kokonaislukutaulukon suurimman
-     * arvon.
-     *
-     * @param array taulukko, josta suurin arvo etsitään
-     * @return taulukon suurin arvo
-     */
-    public int maxValue(int[] array) {
-        int max = 0;
+        
         for (int i = 0; i < array.length; i++) {
-            if (array[i] > max) {
-                max = array[i];
-            }
+            array[i] = output[i];
         }
-        return max;
     }
 }

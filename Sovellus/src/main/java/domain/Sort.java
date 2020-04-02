@@ -24,14 +24,6 @@ public class Sort {
     }
 
     /**
-     * Asettaa parametrina olevan taulukon uudeksi oliomuuttujan arvoksi.
-     * @param array uusi taulukko
-     */
-    public void setArray(int[] array) {
-        this.array = array;
-    }
-
-    /**
      * Eri järjestämisalgoritmit on toteutettu omina aliluokkinaan, jotka
      * korvaavat tämän toteutuksen omalla metodillaan.
      *
@@ -86,5 +78,22 @@ public class Sort {
         int tmp = array[index1];
         array[index1] = array[index2];
         array[index2] = tmp;
+    }
+    
+    /**
+     * Metodi palauttaa parametrina annetun kokonaislukutaulukon suurimman
+     * arvon.
+     *
+     * @param array taulukko, josta suurin arvo etsitään
+     * @return taulukon suurin arvo
+     */
+    public int maxValue(int[] array) {
+        int max = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
     }
 }
