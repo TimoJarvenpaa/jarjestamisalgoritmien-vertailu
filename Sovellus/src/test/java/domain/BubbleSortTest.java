@@ -17,7 +17,7 @@ public class BubbleSortTest {
     @Before
     public void setUp() {
         rand = new RandomArrayGenerator(1000);
-        arrayToSort = rand.getRandomArray();
+        arrayToSort = rand.getRandomArray(1000);
         copiedArray = new int[arrayToSort.length];
         System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
         bubble = new BubbleSort(copiedArray, 1);

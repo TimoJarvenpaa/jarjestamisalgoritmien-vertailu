@@ -25,6 +25,9 @@ public class App extends Application {
         HBox options = new HBox(250);
         VBox arrayOptions = new VBox(5);
         VBox repeatOptions = new VBox(5);
+        VBox rangeOptions = new VBox(5);
+        
+        layout.setStyle("-fx-padding: 10 30 20 30;");
 
         // Järjestettävän taulukon pituuden valinta
         ToggleGroup arrayLength = new ToggleGroup();
@@ -61,10 +64,33 @@ public class App extends Application {
         RadioButton rb6 = new RadioButton("100");
         rb6.setUserData("100");
         rb6.setToggleGroup(repeats);
-
+        
         repeatOptions.getChildren().addAll(repeatsTitle, rb4, rb5, rb6);
         
-        options.getChildren().addAll(arrayOptions, repeatOptions);
+        // Taulukon lukujen arvovälin valinta
+        ToggleGroup range = new ToggleGroup();
+        Text rangeTitle = new Text("Number range");
+        
+        RadioButton rb7 = new RadioButton("1-10");
+        rb7.setUserData("10");
+        rb7.setToggleGroup(range);
+        rb7.setSelected(true);
+
+        RadioButton rb8 = new RadioButton("1-100");
+        rb8.setUserData("100");
+        rb8.setToggleGroup(range);
+
+        RadioButton rb9 = new RadioButton("1-1000");
+        rb9.setUserData("1000");
+        rb9.setToggleGroup(range);
+        
+        RadioButton rb10 = new RadioButton("1-10000");
+        rb10.setUserData("10000");
+        rb10.setToggleGroup(range);
+
+        rangeOptions.getChildren().addAll(rangeTitle, rb7, rb8, rb9, rb10);
+        
+        options.getChildren().addAll(arrayOptions, repeatOptions, rangeOptions);
         
         Button button = new Button("Compare");
 
@@ -93,8 +119,10 @@ public class App extends Application {
             RandomArrayGenerator r = new RandomArrayGenerator(selectedLength);
             
             int selectedRepeats = Integer.parseInt(repeats.getSelectedToggle().getUserData().toString());
+            
+            int selectedRange = Integer.parseInt(range.getSelectedToggle().getUserData().toString());
 
-            int[] arrayToSort = r.getRandomArray();
+            int[] arrayToSort = r.getRandomArray(selectedRange);
 
             if (ins.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];

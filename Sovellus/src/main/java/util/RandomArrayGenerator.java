@@ -18,13 +18,13 @@ public class RandomArrayGenerator {
 
     /**
      * Metodi palauttaa taulukon, joka sisältää satunnaisia kokonaislukuja yhden
-     * ja taulukon pituuden väliltä.
+     * ja annetun ylärajan väliltä.
      *
      * @return taulukko, joka sisältää satunnaisia kokonaislukuja
      */
-    public int[] getRandomArray() {
+    public int[] getRandomArray(int upperBound) {
         for (int i = 0; i < this.array.length; i++) {
-            this.array[i] = getRandomInt(1, this.array.length);
+            this.array[i] = getRandomInt(1, upperBound);
         }
         return this.array;
     }

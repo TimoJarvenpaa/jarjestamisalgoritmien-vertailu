@@ -17,7 +17,7 @@ public class SortTest {
     @Before
     public void setUp() {
         rand = new RandomArrayGenerator(1000);
-        originalArray = rand.getRandomArray();
+        originalArray = rand.getRandomArray(1000);
         sort = new Sort(originalArray, 2);
 
     }
