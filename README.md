@@ -15,6 +15,10 @@ Raportti löytyy tämän jälkeen tiedostosta `build/reports/jacoco/test/html/in
 
 [Määrittelydokumentti](Dokumentaatio/maarittelydokumentti.md)
 
+[Toteutusdokumentti](Dokumentaatio/toteutusdokumentti.md)
+
+[Testausdokumentti](Dokumentaatio/testausdokumentti.md)
+
 ## Viikkoraportit
 
 [Viikkoraportti #1](Dokumentaatio/viikkoraportti1.md)
@@ -22,3 +26,5 @@ Raportti löytyy tämän jälkeen tiedostosta `build/reports/jacoco/test/html/in
 [Viikkoraportti #2](Dokumentaatio/viikkoraportti2.md)
 
 [Viikkoraportti #3](Dokumentaatio/viikkoraportti3.md)
+
+[Viikkoraportti #4](Dokumentaatio/viikkoraportti4.md)

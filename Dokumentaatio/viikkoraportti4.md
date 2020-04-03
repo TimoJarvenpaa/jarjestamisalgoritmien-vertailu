@@ -1,0 +1,9 @@
+# Viikkoraportti #4
+
+Lisäsin sovellukseen tällä viikolla laskemis- ja kantalukujärjestämisen sekä toteutin niiden tarvitsemat käyttöliittymämuutokset. Näiden lisäksi toteutin myös viime viikolla mainitsemani asetuksen järjestettävän taulukon sisältämien lukujen arvovälin valintaa varten. Määrittelydokumentissa mainituista järjestämisalgoritmeista on enää totetuttamatta Introsort ja Timsort. Aloitin jo hieman testaus- ja toteutusdokumenttien suunnittelua, mutta lopulliset mittaukset teen vasta kaikkien algoritmien ollessa valmiita. Käytettävien koeasetelmien sunnittelu vaatii myös vielä harkintaa. Voi olla, että sovelluksen käyttöliittymän asetuksiin pitää myös tehdä lisävaihtoehtoja taulukon koon ym. valintaan, jotta testeistä saa mielekkäämpiä.
+
+Suorituskykytestausta tehdessäni huomasin, että taulukon koon ollessa pieni verrattuna sen sisältämien lukujen arvoväliin (esim. n=100, r=10 000), laskemisjärjestämisen aikavaativuus O(n + r) taantuu lineaarisesta ajasta O(n²):een. Kantalukujärjestämisen tulisi ymmärtämäni mukaan kantalukua kymmenen käyttämällä pystyä samassa tapauksessa lineaariseen aikavaativuuteen, mutta mittaustulosten perustella se on suorituskyvyltään lähempänä O(n log n) aikavaativuuden saavuttavia vertailuun perustuvia algoritmeja. Yritän mm. toteutusdokumenttia varten selvittää, johtuuko ero jostain algoritmin toteutuksessa huomaamatta jääneestä seikasta, vai pelkästä saamastani aikavaativuuksia koskevasta väärinkäsityksestä.
+
+Seuraavaan palautukseen mennessä tarkoituksena on saada valmiiksi Introsort ja Timsort, jolloin sovelluksen kaikki suunnitellut ominaisuudet olisivat valmiina. Näiden jälkeen tavoitteena on ratkaista mahdolliset suorituskykytestaukseen liittyvät ongelmat ja laatia varsinaiset toteutus- ja testausdokumentit.
+
+(4. viikon aikana työhön käytetty tuntimäärä: 11 h)
