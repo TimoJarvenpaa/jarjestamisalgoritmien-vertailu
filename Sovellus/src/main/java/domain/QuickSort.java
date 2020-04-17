@@ -36,6 +36,7 @@ public class QuickSort extends Sort {
         if (leftIndex >= rightIndex) {
             return;
         }
+        
         int pivot = medianOfThree(array, leftIndex, rightIndex);
         int index = partition(array, leftIndex, rightIndex, pivot);
         quickSort(array, leftIndex, index - 1);

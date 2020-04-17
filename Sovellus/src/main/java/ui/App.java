@@ -26,7 +26,7 @@ public class App extends Application {
         VBox arrayOptions = new VBox(5);
         VBox repeatOptions = new VBox(5);
         VBox rangeOptions = new VBox(5);
-        
+
         layout.setStyle("-fx-padding: 10 30 20 30;");
 
         // Järjestettävän taulukon pituuden valinta
@@ -45,13 +45,13 @@ public class App extends Application {
         RadioButton rb3 = new RadioButton("10 000");
         rb3.setUserData("10000");
         rb3.setToggleGroup(arrayLength);
-        
+
         arrayOptions.getChildren().addAll(arrayTitle, rb1, rb2, rb3);
-        
+
         // Taulukon järjestämiskertojen lukumäärän valinta
         ToggleGroup repeats = new ToggleGroup();
         Text repeatsTitle = new Text("Repeats");
-        
+
         RadioButton rb4 = new RadioButton("1");
         rb4.setUserData("1");
         rb4.setToggleGroup(repeats);
@@ -64,13 +64,13 @@ public class App extends Application {
         RadioButton rb6 = new RadioButton("100");
         rb6.setUserData("100");
         rb6.setToggleGroup(repeats);
-        
+
         repeatOptions.getChildren().addAll(repeatsTitle, rb4, rb5, rb6);
-        
+
         // Taulukon lukujen arvovälin valinta
         ToggleGroup range = new ToggleGroup();
         Text rangeTitle = new Text("Number range");
-        
+
         RadioButton rb7 = new RadioButton("1-10");
         rb7.setUserData("10");
         rb7.setToggleGroup(range);
@@ -83,19 +83,19 @@ public class App extends Application {
         RadioButton rb9 = new RadioButton("1-1000");
         rb9.setUserData("1000");
         rb9.setToggleGroup(range);
-        
+
         RadioButton rb10 = new RadioButton("1-10000");
         rb10.setUserData("10000");
         rb10.setToggleGroup(range);
 
         rangeOptions.getChildren().addAll(rangeTitle, rb7, rb8, rb9, rb10);
-        
+
         options.getChildren().addAll(arrayOptions, repeatOptions, rangeOptions);
-        
+
         Button button = new Button("Compare");
 
         // Järjestämisalgoritmien valinta
-        CheckBox ins, bub, mer, qui, cou, rad;
+        CheckBox ins, bub, mer, qui, cou, rad, hea, intr;
 
         ins = new CheckBox("Insertion");
         bub = new CheckBox("Bubble");
@@ -103,10 +103,12 @@ public class App extends Application {
         qui = new CheckBox("Quick (Median-of-three)");
         cou = new CheckBox("Counting");
         rad = new CheckBox("Radix");
+        hea = new CheckBox("Heap");
+        intr = new CheckBox("Intro");
 
         TextArea ta = new TextArea();
 
-        layout.getChildren().addAll(options, ins, bub, mer, qui, cou, rad, ta, button);
+        layout.getChildren().addAll(options, ins, bub, mer, qui, cou, rad, hea, intr, ta, button);
 
         Scene scene = new Scene(layout);
 
@@ -114,12 +116,12 @@ public class App extends Application {
         button.setOnAction(event -> {
 
             ta.clear();
-            
+
             int selectedLength = Integer.parseInt(arrayLength.getSelectedToggle().getUserData().toString());
             RandomArrayGenerator r = new RandomArrayGenerator(selectedLength);
-            
+
             int selectedRepeats = Integer.parseInt(repeats.getSelectedToggle().getUserData().toString());
-            
+
             int selectedRange = Integer.parseInt(range.getSelectedToggle().getUserData().toString());
 
             int[] arrayToSort = r.getRandomArray(selectedRange);
@@ -137,35 +139,48 @@ public class App extends Application {
                 Sort bubble = new BubbleSort(copiedArray, selectedRepeats);
                 ta.appendText("Bubble sort: " + bubble.getAverageTime() + " ns\n");
             }
-            
+
             if (mer.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort merge = new MergeSort(copiedArray, selectedRepeats);
                 ta.appendText("Merge sort: " + merge.getAverageTime() + " ns\n");
             }
-            
+
             if (qui.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort quick = new QuickSort(copiedArray, selectedRepeats);
                 ta.appendText("Quick sort: " + quick.getAverageTime() + " ns\n");
             }
-            
+
             if (cou.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort count = new CountingSort(copiedArray, selectedRepeats);
                 ta.appendText("Counting sort: " + count.getAverageTime() + " ns\n");
             }
-            
+
             if (rad.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort radix = new RadixSort(copiedArray, selectedRepeats);
                 ta.appendText("Radix sort: " + radix.getAverageTime() + " ns\n");
             }
-            
+
+            if (hea.isSelected()) {
+                int[] copiedArray = new int[arrayToSort.length];
+                System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
+                Sort heap = new HeapSort(copiedArray, selectedRepeats);
+                ta.appendText("Heap sort: " + heap.getAverageTime() + " ns\n");
+            }
+
+            if (intr.isSelected()) {
+                int[] copiedArray = new int[arrayToSort.length];
+                System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
+                Sort intro = new IntroSort(copiedArray, selectedRepeats);
+                ta.appendText("Intro sort: " + intro.getAverageTime() + " ns\n");
+            }
 
         });
 

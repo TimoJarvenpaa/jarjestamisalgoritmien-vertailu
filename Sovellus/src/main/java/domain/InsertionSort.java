@@ -19,18 +19,46 @@ public class InsertionSort extends Sort {
     @Override
     public long sort() {
         long startTime = System.nanoTime();
+        insertionSort(this.array);
+        long endTime = System.nanoTime();
+        return endTime - startTime;
+    }
+
+    /**
+     * Metodi järjestää annetun taulukon käyttäen lisäysjärjestämistä
+     *
+     * @param array järjestettävä taulukko
+     */
+    public void insertionSort(int[] array) {
         int i = 1;
-        while (i < this.array.length) {
+        while (i < array.length) {
             int j = i;
-            while (j > 0 && this.array[j - 1] > this.array[j]) {
-                int tmp = this.array[j];
-                this.array[j] = this.array[j - 1];
-                this.array[j - 1] = tmp;
+            while (j > 0 && array[j - 1] > array[j]) {
+                swap(array, j, j - 1);
                 j--;
             }
             i++;
         }
-        long endTime = System.nanoTime();
-        return endTime - startTime;
+    }
+
+    /**
+     * Metodi järjestää annetussa taulukossa parametreina saatujen indeksien
+     * välisen alueen käyttäen lisäysjärjestämistä
+     *
+     * @param array taulukko, jossa järjestäminen tapahtuu
+     * @param leftIndex järjestettävän osuuden ensimmäinen indeksi
+     * @param rightIndex järjestettävän osuuden viimeinen indeksi
+     */
+    public void insertionSort(int[] array, int leftIndex, int rightIndex) {
+        for (int i = leftIndex; i <= rightIndex; i++) {
+            int key = array[i];
+            int j = i;
+
+            while (j > leftIndex && array[j - 1] > key) {
+                array[j] = array[j - 1];
+                j--;
+            }
+            array[j] = key;
+        }
     }
 }
