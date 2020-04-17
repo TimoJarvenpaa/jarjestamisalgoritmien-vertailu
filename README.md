@@ -28,3 +28,5 @@ Raportti löytyy tämän jälkeen tiedostosta `build/reports/jacoco/test/html/in
 [Viikkoraportti #3](Dokumentaatio/viikkoraportti3.md)
 
 [Viikkoraportti #4](Dokumentaatio/viikkoraportti4.md)
+
+[Viikkoraportti #5](Dokumentaatio/viikkoraportti5.md)

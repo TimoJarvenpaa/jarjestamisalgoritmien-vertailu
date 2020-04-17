@@ -32,6 +32,8 @@ Sovelluksen asetuksiin kuuluu järjestettävän taulukon koon ja sen sisältämi
 |Pikajärjestäminen|828 431|831 516||
 |Laskemisjärjestäminen|56 664|40 455||
 |Kantalukujärjestäminen|537 359|444 738||
+|Kekojärjestäminen|||
+|Introsort|||
 
 ### Koeasetelma #2
 
@@ -47,5 +49,7 @@ Sovelluksen asetuksiin kuuluu järjestettävän taulukon koon ja sen sisältämi
 |Pikajärjestäminen|6 460|||
 |Laskemisjärjestäminen|63 308|||
 |Kantalukujärjestäminen|23 658|||
+|Kekojärjestäminen|||
+|Introsort|||
 
 (Huom. Yllä olevat koeasetelmat ovat vasta hahmotelmia. Teen lopulliset mittaukset vasta sitten, kun loputkin vertailtavat järjestämisalgoritmit on toteutettu.)
