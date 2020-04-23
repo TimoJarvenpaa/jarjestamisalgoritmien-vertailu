@@ -36,6 +36,13 @@ public class SortTest {
         int result = sort.maxValue(array);
         assertEquals(94, result);
     }
+    
+    @Test
+    public void minValueReturnsCorrectValue() {
+        int[] array = {49, 12, 22, 65, 94, 7};
+        int result = sort.minValue(array);
+        assertEquals(7, result);
+    }
 
     @Test
     public void swapWorksCorrectly() {

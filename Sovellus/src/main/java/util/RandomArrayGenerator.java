@@ -20,7 +20,9 @@ public class RandomArrayGenerator {
      * Metodi palauttaa taulukon, joka sisältää satunnaisia kokonaislukuja yhden
      * ja annetun ylärajan väliltä.
      *
-     * @return taulukko, joka sisältää satunnaisia kokonaislukuja
+     * @param upperBound generoitavien lukujen yläraja
+     * @return taulukko, joka sisältää satunnaisia kokonaislukuja annetun
+     * ylärajan ja yhden välillä
      */
     public int[] getRandomArray(int upperBound) {
         for (int i = 0; i < this.array.length; i++) {

@@ -168,4 +168,21 @@ public class Sort {
         }
         return max;
     }
+
+    /**
+     * Metodi palauttaa parametrina annetun kokonaislukutaulukon pienimmän
+     * arvon.
+     *
+     * @param array taulukko, josta pienin arvo etsitään
+     * @return taulukon pienin arvo
+     */
+    public int minValue(int[] array) {
+        int min = array[0];
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < min) {
+                min = array[i];
+            }
+        }
+        return min;
+    }
 }
