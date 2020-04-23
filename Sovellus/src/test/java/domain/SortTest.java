@@ -44,4 +44,18 @@ public class SortTest {
         int[] expectedResult = {7, 12, 22, 65, 94, 49};
         assertTrue(Arrays.equals(expectedResult, array));
     }
+    
+    @Test
+    public void medianIsCalculatedCorrectlyForEvenLengthArray() {
+        long[] array = {49, 12, 22, 65, 94, 7}; //sorted: {7, 12, 22, 49, 65, 94}
+        long result = sort.median(array);
+        assertEquals(35, result);
+    }
+    
+    @Test
+    public void medianIsCalculatedCorrectlyForOddLengthArray() {
+        long[] array = {12, 22, 65, 94, 7}; //sorted: {7, 12, 22, 65, 94}
+        long result = sort.median(array);
+        assertEquals(22, result);
+    }
 }

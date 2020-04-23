@@ -22,12 +22,13 @@ public class App extends Application {
     @Override
     public void start(Stage window) {
         VBox layout = new VBox(5);
-        HBox options = new HBox(250);
+        HBox options = new HBox(50);
         VBox arrayOptions = new VBox(5);
         VBox repeatOptions = new VBox(5);
         VBox rangeOptions = new VBox(5);
+        VBox timeOptions = new VBox(5);
 
-        layout.setStyle("-fx-padding: 10 30 20 30;");
+        layout.setStyle("-fx-padding: 10 30 20 30;"); //top, right, bottom, left
         options.setStyle("-fx-padding: 0 0 20 0;");
 
         // Järjestettävän taulukon pituuden valinta
@@ -62,7 +63,17 @@ public class App extends Application {
 
         rangeOptions.getChildren().addAll(rangeTitle, rb7, rb8, rb9, rb10);
 
-        options.getChildren().addAll(arrayOptions, repeatOptions, rangeOptions);
+        // Mittaustulosten esitysmuodon valinta
+        ToggleGroup timeFormat = new ToggleGroup();
+        Text timeTitle = new Text("Time format");
+
+        RadioButton rb12 = createRadioButton("ns", timeFormat, "ns", true);
+        RadioButton rb13 = createRadioButton("ms", timeFormat, "ms", false);
+        RadioButton rb14 = createRadioButton("s", timeFormat, "s", false);
+
+        timeOptions.getChildren().addAll(timeTitle, rb12, rb13, rb14);
+
+        options.getChildren().addAll(arrayOptions, repeatOptions, rangeOptions, timeOptions);
 
         Button button = new Button("Compare");
 
@@ -93,8 +104,8 @@ public class App extends Application {
             RandomArrayGenerator r = new RandomArrayGenerator(selectedLength);
 
             int selectedRepeats = Integer.parseInt(repeats.getSelectedToggle().getUserData().toString());
-
             int selectedRange = Integer.parseInt(range.getSelectedToggle().getUserData().toString());
+            String selectedTime = timeFormat.getSelectedToggle().getUserData().toString();
 
             int[] arrayToSort = r.getRandomArray(selectedRange);
 
@@ -102,56 +113,56 @@ public class App extends Application {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort insertion = new InsertionSort(copiedArray, selectedRepeats);
-                ta.appendText("Insertion sort: " + insertion.getAverageTime() + " ns\n");
+                ta.appendText("Insertion sort: " + timeFormat(insertion.getMedianTime(), selectedTime));
             }
 
             if (bub.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort bubble = new BubbleSort(copiedArray, selectedRepeats);
-                ta.appendText("Bubble sort: " + bubble.getAverageTime() + " ns\n");
+                ta.appendText("Bubble sort: " + timeFormat(bubble.getMedianTime(), selectedTime));
             }
 
             if (mer.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort merge = new MergeSort(copiedArray, selectedRepeats);
-                ta.appendText("Merge sort: " + merge.getAverageTime() + " ns\n");
+                ta.appendText("Merge sort: " + timeFormat(merge.getMedianTime(), selectedTime));
             }
 
             if (qui.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort quick = new QuickSort(copiedArray, selectedRepeats);
-                ta.appendText("Quick sort: " + quick.getAverageTime() + " ns\n");
+                ta.appendText("Quick sort: " + timeFormat(quick.getMedianTime(), selectedTime));
             }
 
             if (cou.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort count = new CountingSort(copiedArray, selectedRepeats);
-                ta.appendText("Counting sort: " + count.getAverageTime() + " ns\n");
+                ta.appendText("Counting sort: " + timeFormat(count.getMedianTime(), selectedTime));
             }
 
             if (rad.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort radix = new RadixSort(copiedArray, selectedRepeats);
-                ta.appendText("Radix sort: " + radix.getAverageTime() + " ns\n");
+                ta.appendText("Radix sort: " + timeFormat(radix.getMedianTime(), selectedTime));
             }
 
             if (hea.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort heap = new HeapSort(copiedArray, selectedRepeats);
-                ta.appendText("Heap sort: " + heap.getAverageTime() + " ns\n");
+                ta.appendText("Heap sort: " + timeFormat(heap.getMedianTime(), selectedTime));
             }
 
             if (intr.isSelected()) {
                 int[] copiedArray = new int[arrayToSort.length];
                 System.arraycopy(arrayToSort, 0, copiedArray, 0, arrayToSort.length);
                 Sort intro = new IntroSort(copiedArray, selectedRepeats);
-                ta.appendText("Intro sort: " + intro.getAverageTime() + " ns\n");
+                ta.appendText("Intro sort: " + timeFormat(intro.getMedianTime(), selectedTime));
             }
 
         });
@@ -163,7 +174,16 @@ public class App extends Application {
     public static void main(String[] args) {
         launch(App.class);
     }
-    
+
+    /**
+     * Apumetodi radiopainikkeiden luomiseen.
+     *
+     * @param buttonText painikkeen teksti
+     * @param toggleGroup painikkeen kategoria
+     * @param userData painikkeen välittämä tieto
+     * @param selected onko painike oletusarvoisesti valittuna
+     * @return
+     */
     private RadioButton createRadioButton(String buttonText, ToggleGroup toggleGroup, String userData, boolean selected) {
         RadioButton button = new RadioButton();
         button.setText(buttonText);
@@ -173,6 +193,27 @@ public class App extends Application {
             button.setSelected(true);
         }
         return button;
+    }
+
+    /**
+     * Apumetodi, jonka avulla mittaustulosten esitystapa voidaan tulostaa
+     * valitun vaihtoehdon perusteella.
+     *
+     * @param time mittaustulos nanosekunteina
+     * @param selectedTimeFormat valittu ajan esitysmuoto (ns, ms, s)
+     * @return mittaustuloksen merkkijonoesitys
+     */
+    private String timeFormat(long time, String selectedTimeFormat) {
+        if (selectedTimeFormat.equals("ns")) {
+            return "" + time + " ns\n";
+        }
+        if (selectedTimeFormat.equals("ms")) {
+            double milliseconds = time / 1000000.0;
+            return "" + milliseconds + " ms\n";
+        } else {
+            double seconds = time / 1000000000.0;
+            return "" + seconds + " s\n";
+        }
     }
 
 }
