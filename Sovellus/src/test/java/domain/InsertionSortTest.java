@@ -9,7 +9,7 @@ import util.RandomArrayGenerator;
 
 public class InsertionSortTest {
 
-    Sort insertion;
+    InsertionSort insertion;
     RandomArrayGenerator rand;
     int[] arrayToSort;
     int[] copiedArray;
@@ -33,5 +33,13 @@ public class InsertionSortTest {
         int[] result = insertion.getArray();
 
         assertTrue(Arrays.equals(expectedResult, result));
+    }
+    
+    @Test
+    public void limitedInsertionSortWorksCorrectly() {
+        int[] array = {13, 52, 73, 11, 3, 25};
+        insertion.insertionSort(array, 1, 4);
+        int[] expectedResult = {13, 3, 11, 52, 73, 25};
+        assertTrue(Arrays.equals(expectedResult, array));
     }
 }

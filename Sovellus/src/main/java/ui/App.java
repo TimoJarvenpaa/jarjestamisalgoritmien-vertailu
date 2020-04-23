@@ -28,42 +28,26 @@ public class App extends Application {
         VBox rangeOptions = new VBox(5);
 
         layout.setStyle("-fx-padding: 10 30 20 30;");
+        options.setStyle("-fx-padding: 0 0 20 0;");
 
         // Järjestettävän taulukon pituuden valinta
         ToggleGroup arrayLength = new ToggleGroup();
         Text arrayTitle = new Text("Array length");
 
-        RadioButton rb1 = new RadioButton("100");
-        rb1.setUserData("100");
-        rb1.setToggleGroup(arrayLength);
-        rb1.setSelected(true);
+        RadioButton rb1 = createRadioButton("100", arrayLength, "100", true);
+        RadioButton rb2 = createRadioButton("1000", arrayLength, "1000", false);
+        RadioButton rb3 = createRadioButton("10 000", arrayLength, "10000", false);
+        RadioButton rb11 = createRadioButton("100 000", arrayLength, "100000", false);
 
-        RadioButton rb2 = new RadioButton("1000");
-        rb2.setUserData("1000");
-        rb2.setToggleGroup(arrayLength);
-
-        RadioButton rb3 = new RadioButton("10 000");
-        rb3.setUserData("10000");
-        rb3.setToggleGroup(arrayLength);
-
-        arrayOptions.getChildren().addAll(arrayTitle, rb1, rb2, rb3);
+        arrayOptions.getChildren().addAll(arrayTitle, rb1, rb2, rb3, rb11);
 
         // Taulukon järjestämiskertojen lukumäärän valinta
         ToggleGroup repeats = new ToggleGroup();
         Text repeatsTitle = new Text("Repeats");
 
-        RadioButton rb4 = new RadioButton("1");
-        rb4.setUserData("1");
-        rb4.setToggleGroup(repeats);
-        rb4.setSelected(true);
-
-        RadioButton rb5 = new RadioButton("10");
-        rb5.setUserData("10");
-        rb5.setToggleGroup(repeats);
-
-        RadioButton rb6 = new RadioButton("100");
-        rb6.setUserData("100");
-        rb6.setToggleGroup(repeats);
+        RadioButton rb4 = createRadioButton("1", repeats, "1", true);
+        RadioButton rb5 = createRadioButton("10", repeats, "10", false);
+        RadioButton rb6 = createRadioButton("100", repeats, "100", false);
 
         repeatOptions.getChildren().addAll(repeatsTitle, rb4, rb5, rb6);
 
@@ -71,22 +55,10 @@ public class App extends Application {
         ToggleGroup range = new ToggleGroup();
         Text rangeTitle = new Text("Number range");
 
-        RadioButton rb7 = new RadioButton("1-10");
-        rb7.setUserData("10");
-        rb7.setToggleGroup(range);
-        rb7.setSelected(true);
-
-        RadioButton rb8 = new RadioButton("1-100");
-        rb8.setUserData("100");
-        rb8.setToggleGroup(range);
-
-        RadioButton rb9 = new RadioButton("1-1000");
-        rb9.setUserData("1000");
-        rb9.setToggleGroup(range);
-
-        RadioButton rb10 = new RadioButton("1-10000");
-        rb10.setUserData("10000");
-        rb10.setToggleGroup(range);
+        RadioButton rb7 = createRadioButton("1-10", range, "10", true);
+        RadioButton rb8 = createRadioButton("1-100", range, "100", false);
+        RadioButton rb9 = createRadioButton("1-1000", range, "1000", false);
+        RadioButton rb10 = createRadioButton("1-10000", range, "10000", false);
 
         rangeOptions.getChildren().addAll(rangeTitle, rb7, rb8, rb9, rb10);
 
@@ -190,6 +162,17 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch(App.class);
+    }
+    
+    private RadioButton createRadioButton(String buttonText, ToggleGroup toggleGroup, String userData, boolean selected) {
+        RadioButton button = new RadioButton();
+        button.setText(buttonText);
+        button.setToggleGroup(toggleGroup);
+        button.setUserData(userData);
+        if (selected) {
+            button.setSelected(true);
+        }
+        return button;
     }
 
 }

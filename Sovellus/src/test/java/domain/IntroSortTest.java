@@ -1,5 +1,6 @@
 package domain;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -9,7 +10,7 @@ import util.RandomArrayGenerator;
 
 public class IntroSortTest {
 
-    Sort intro;
+    IntroSort intro;
     RandomArrayGenerator rand;
     int[] arrayToSort;
     int[] copiedArray;
@@ -33,5 +34,12 @@ public class IntroSortTest {
         int[] result = intro.getArray();
 
         assertTrue(Arrays.equals(expectedResult, result));
+    }
+    
+    @Test
+    public void maxDepthIsCalcultedCorrectly() {
+        int expectedResult = 11;
+        int result = intro.calculateMaxDepth(100000);
+        assertEquals(expectedResult, result);
     }
 }

@@ -19,16 +19,28 @@ public class BubbleSort extends Sort {
     @Override
     public long sort() {
         long startTime = System.nanoTime();
-        for (int i = 0; i < this.array.length - 1; i++) {
-            for (int j = 0; j < this.array.length - i - 1; j++) {
-                if (this.array[j] > this.array[j + 1]) {
-                    int tmp = this.array[j];
-                    this.array[j] = this.array[j + 1];
-                    this.array[j + 1] = tmp;
-                }
-            }
-        }
+        bubbleSort(this.array);
         long endTime = System.nanoTime();
         return endTime - startTime;
+    }
+
+    /**
+     * Kuplajärjestämisen suorittava metodi.
+     * @param array järjestettävä taulukko
+     */
+    public void bubbleSort(int[] array) {
+        boolean isSwapped;
+        for (int i = 0; i < array.length - 1; i++) {
+            isSwapped = false;
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    swap(array, j, j + 1);
+                    isSwapped = true;
+                }
+            }
+            if (isSwapped == false) {
+                break;
+            }
+        }
     }
 }

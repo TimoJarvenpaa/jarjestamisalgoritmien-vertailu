@@ -44,4 +44,20 @@ public class HeapSortTest {
 
         assertTrue(Arrays.equals(expectedResult, result));
     }
+    
+    @Test
+    public void heapIsBuiltCorrectly() {
+        int[] array = {3, 44, 27, 42, 20, 75};
+        heap.buildMaxHeap(array);
+        int[] expectedResult = {75, 44, 27, 42, 20, 3};
+        assertTrue(Arrays.equals(expectedResult, array));
+    }
+    
+    @Test
+    public void limitedHeapIsBuiltCorrectly() {
+        int[] array = {10, 35, 3, 44, 27, 42, 20, 75, 81, 12};
+        heap.buildLimitedMaxHeap(array, 2, 7, 6);
+        int[] expectedResult = {10, 35, 75, 44, 27, 42, 20, 3, 81, 12};
+        assertTrue(Arrays.equals(expectedResult, array));
+    }
 }

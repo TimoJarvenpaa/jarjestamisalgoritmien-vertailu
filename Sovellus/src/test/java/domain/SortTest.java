@@ -1,5 +1,6 @@
 package domain;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -27,5 +28,20 @@ public class SortTest {
         sort.getAverageTime();
         restoredArray = sort.getArray();
         assertTrue(originalArray != restoredArray);
+    }
+
+    @Test
+    public void maxValueReturnsCorrectValue() {
+        int[] array = {49, 12, 22, 65, 94, 7};
+        int result = sort.maxValue(array);
+        assertEquals(94, result);
+    }
+
+    @Test
+    public void swapWorksCorrectly() {
+        int[] array = {49, 12, 22, 65, 94, 7};
+        sort.swap(array, 0, 5);
+        int[] expectedResult = {7, 12, 22, 65, 94, 49};
+        assertTrue(Arrays.equals(expectedResult, array));
     }
 }

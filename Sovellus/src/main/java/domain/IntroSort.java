@@ -26,7 +26,7 @@ public class IntroSort extends Sort {
     @Override
     public long sort() {
         long startTime = System.nanoTime();
-        int maxDepth = (int) Math.floor(Math.log(this.array.length)) * 2;
+        int maxDepth = calculateMaxDepth(this.array.length) * 2;
         introSort(this.array, 0, this.array.length - 1, maxDepth);
         long endTime = System.nanoTime();
         return endTime - startTime;
@@ -66,5 +66,23 @@ public class IntroSort extends Sort {
             is.insertionSort(array, leftIndex, rightIndex);
         }
 
+    }
+
+    /**
+     * Metodi laskee IntroSortin käyttämän maksimirekursiosyvyyden, jonka
+     * jälkeen pikajärjestäminen vaihdetaan kekojärjestämiseen
+     *
+     * @param length järjestettävän taulukon pituus
+     * @return rekursiosyvyys
+     */
+    public int calculateMaxDepth(int length) {
+        int maxDepth = 1;
+        double exp = 2.7182818284;
+        double value = exp * exp;
+        while (value < length) {
+            maxDepth++;
+            value *= exp;
+        }
+        return maxDepth;
     }
 }

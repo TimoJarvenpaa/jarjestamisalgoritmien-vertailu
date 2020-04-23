@@ -19,22 +19,20 @@ public class CountingSort extends Sort {
     @Override
     public long sort() {
         long startTime = System.nanoTime();
-        countingSort(this.array);
+        countingSort();
         long endTime = System.nanoTime();
         return endTime - startTime;
     }
 
     /**
      * Metodi suorittaa laskemisjärjestämisen parametrina annetulle taulukolle
-     *
-     * @param array järjestettävä taulukko
      */
-    public void countingSort(int[] array) {
-        int k = maxValue(array);
+    public void countingSort() {
+        int k = maxValue(this.array);
         int[] count = new int[k + 1];
 
-        for (int i = 0; i < array.length; i++) {
-            count[array[i]]++;
+        for (int i = 0; i < this.array.length; i++) {
+            count[this.array[i]]++;
         }
 
         int total = 0;
@@ -44,15 +42,13 @@ public class CountingSort extends Sort {
             total = tmp;
         }
 
-        int[] output = new int[array.length];
+        int[] output = new int[this.array.length];
 
-        for (int i = 0; i < array.length; i++) {
-            output[count[array[i]]] = array[i];
-            count[array[i]]++;
+        for (int i = 0; i < this.array.length; i++) {
+            output[count[this.array[i]]] = this.array[i];
+            count[this.array[i]]++;
         }
-        
-        for (int i = 0; i < array.length; i++) {
-            array[i] = output[i];
-        }
+
+        this.array = output;
     }
 }

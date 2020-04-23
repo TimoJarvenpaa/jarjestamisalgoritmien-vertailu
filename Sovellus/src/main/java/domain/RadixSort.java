@@ -19,7 +19,7 @@ public class RadixSort extends Sort {
     @Override
     public long sort() {
         long startTime = System.nanoTime();
-        radixSort(this.array);
+        radixSort();
         long endTime = System.nanoTime();
         return endTime - startTime;
     }
@@ -29,14 +29,12 @@ public class RadixSort extends Sort {
      * laskemisjärjestämistä taulukon vaiheittaisessa järjestämisessä edeten
      * vähiten merkitsevästä numerosta seuraavaksi vähiten merkitsevään
      * numeroon.
-     *
-     * @param array järjestettävä taulukko
      */
-    public void radixSort(int[] array) {
-        int max = maxValue(array);
+    public void radixSort() {
+        int max = maxValue(this.array);
 
         for (int exp = 1; (max / exp) > 0; exp *= 10) {
-            digitBasedCountingSort(array, exp);
+            digitBasedCountingSort(exp);
         }
     }
 
@@ -44,15 +42,14 @@ public class RadixSort extends Sort {
      * Metodi suorittaa laskemisjärjestämisen parametrina annetulle taulukolle
      * toisena parametrina annetun merkitsevän numeron position mukaan.
      *
-     * @param array järjestettävä taulukko
      * @param exp merkitsevän numeron positio kymmenjärjestelmässä (1, 10,
      * 100...)
      */
-    public void digitBasedCountingSort(int[] array, int exp) {
+    public void digitBasedCountingSort(int exp) {
         int[] count = new int[10];
 
-        for (int i = 0; i < array.length; i++) {
-            count[(array[i] / exp) % 10]++;
+        for (int i = 0; i < this.array.length; i++) {
+            count[(this.array[i] / exp) % 10]++;
         }
 
         int total = 0;
@@ -62,16 +59,14 @@ public class RadixSort extends Sort {
             total = tmp;
         }
 
-        int[] output = new int[array.length];
+        int[] output = new int[this.array.length];
 
-        for (int i = 0; i < array.length; i++) {
-            output[count[(array[i] / exp) % 10]] = array[i];
-            count[(array[i] / exp) % 10]++;
+        for (int i = 0; i < this.array.length; i++) {
+            output[count[(this.array[i] / exp) % 10]] = this.array[i];
+            count[(this.array[i] / exp) % 10]++;
         }
 
-        for (int i = 0; i < array.length; i++) {
-            array[i] = output[i];
-        }
+        this.array = output;
     }
 
 }

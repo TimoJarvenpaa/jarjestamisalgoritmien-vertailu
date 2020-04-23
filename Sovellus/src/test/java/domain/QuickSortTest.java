@@ -1,5 +1,6 @@
 package domain;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
@@ -9,7 +10,7 @@ import util.RandomArrayGenerator;
 
 public class QuickSortTest {
 
-    Sort quick;
+    QuickSort quick;
     RandomArrayGenerator rand;
     int[] arrayToSort;
     int[] copiedArray;
@@ -33,5 +34,12 @@ public class QuickSortTest {
         int[] result = quick.getArray();
 
         assertTrue(Arrays.equals(expectedResult, result));
+    }
+    
+    @Test
+    public void medianOfThreeReturnsCorrectValue() {
+        int[] arr = {7,2,9,5,4};
+        int result = quick.medianOfThree(arr, 0, 4);
+        assertEquals(7, result);
     }
 }

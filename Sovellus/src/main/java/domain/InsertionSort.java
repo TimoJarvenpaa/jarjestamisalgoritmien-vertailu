@@ -50,15 +50,12 @@ public class InsertionSort extends Sort {
      * @param rightIndex järjestettävän osuuden viimeinen indeksi
      */
     public void insertionSort(int[] array, int leftIndex, int rightIndex) {
-        for (int i = leftIndex; i <= rightIndex; i++) {
-            int key = array[i];
+        for (int i = leftIndex + 1; i <= rightIndex; i++) {
             int j = i;
-
-            while (j > leftIndex && array[j - 1] > key) {
-                array[j] = array[j - 1];
+            while (j > leftIndex && array[j - 1] > array[j]) {
+                swap(array, j, j - 1);
                 j--;
             }
-            array[j] = key;
         }
     }
 }
