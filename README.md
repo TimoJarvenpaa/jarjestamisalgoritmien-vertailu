@@ -1,16 +1,5 @@
 # Järjestämisalgoritmien vertailusovellus
 
-Ohjelma käynnistetään Sovellus-hakemistossa komennolla:
-```
-./gradlew run
-```
-
-Testikattavuusraportti voidaan luoda Sovellus-hakemistossa komennolla:
-```
-./gradlew jacocoTestReport
-```
-Raportti löytyy tämän jälkeen tiedostosta `build/reports/jacoco/test/html/index.html`
-
 ## Dokumentaatio
 
 [Määrittelydokumentti](Dokumentaatio/maarittelydokumentti.md)
