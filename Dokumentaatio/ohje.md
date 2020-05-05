@@ -38,9 +38,9 @@ Ohjelman avulla käyttäjä voi vertailla tiettyjen järjestämisalgoritmien aik
 
 * *Number range* määrittää taulukon sisältämien kokonaislukujen arvovälin. Asetus vaikuttaa lähinnä laskemis- ja kantalukujärjestämisen toimintaan.
 
-* *Time format* määrittää tulostuksessa käytettävän ajan yksikön. Pienemmilla taulukoilla nanosekunti voi olla selkeämpi vaihtoehto, mutta suurempien taulukoiden järjestämiseen kuluu enemmän aikaa ja tulosten esittäminen millisekunteina voi siksi helpottaa niiden lukemista.
+* *Time format* määrittää tulostuksessa käytettävän ajan yksikön. Pienemmillä taulukoilla nanosekunti voi olla selkeämpi vaihtoehto, mutta suurempien taulukoiden järjestämiseen kuluu enemmän aikaa ja tulosten esittäminen millisekunteina voi siksi helpottaa niiden lukemista.
 
-* *Compare* painike luo sitä painettaessa asetusten mukaisen satunnaisesti generoidun taulukon ja suorittaa ajan mittaamisen kullekin valitulle järjestämisalgoritmille. Tulokset tulostuvat lopulta sovelluksen tekstikenttään.
+* *Compare*-painike luo sitä painettaessa asetusten mukaisen satunnaisesti generoidun taulukon ja suorittaa ajan mittaamisen kullekin valitulle järjestämisalgoritmille. Tulokset tulostuvat lopulta sovelluksen tekstikenttään.
 
 ### Lisähuomautus
 
