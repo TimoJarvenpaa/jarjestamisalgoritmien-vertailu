@@ -48,10 +48,11 @@ Käyttöliittymän rakentamiseen on käytetty JavaFX-kirjaston komponentteja. Yk
 
 #### Kantalukujärjestäminen (Radix sort)
 
-* Teoreettinen aikavaativuus O(n*w), missä w on suurimman järjestettävän luvun pituus
+* Teoreettinen aikavaativuus O(n * w), missä w on suurimman järjestettävän luvun pituus
 * Sovelluksen käyttämä kantalukujärjestäminen on toteutettu niin, että taulukko järjestetään numeropositio kerrallaan vähiten merkitsevästä numerosta alkaen käyttäen jokaisella kierroksella laskemisjärjestämistä. Laskemisjärjestämisen käyttämä kymmenen jakojäännösoperaatio ilmeisesti hidastaa algoritmin toimintaa ja se pärjäsikin suorituskykyvertailussa suurinpiirtein yhtä hyvin kuin O(n log(n))-algoritmit.
 
 [Wikipedia, Radix sort](https://en.wikipedia.org/wiki/Radix_sort)
+
 [GeeksforGeeks, Radix sort](https://www.geeksforgeeks.org/radix-sort/)
 
 #### Kekojärjestäminen (Heap sort)
@@ -60,6 +61,7 @@ Käyttöliittymän rakentamiseen on käytetty JavaFX-kirjaston komponentteja. Yk
 * Sovelluksen kekojärjestäminen on toteutettu maksimikeon avulla. Koska kekoa ei tietorakenteena tarvittu luokan ulkopuolella, on kaikki keon rakentamiseen liittyvät metodit toteutettu HeapSort-luokan sisällä ja ne tehdään syötteenä saatua taulukoa muokkaamalla. Kekojärjestämisen hyvä puoli on, että sen pahimman tapauksen aikavaativuus on O(n log(n)).
 
 [Wikipedia, Heapsort](https://en.wikipedia.org/wiki/Heapsort)
+
 [TutorialHorizon, Heap sort](https://algorithms.tutorialhorizon.com/heap-sort-java-implementation/)
 
 #### Introsort
@@ -68,6 +70,7 @@ Käyttöliittymän rakentamiseen on käytetty JavaFX-kirjaston komponentteja. Yk
 * Hybridijärjestämisalgoritmina introsort yhdistelee pika-, keko- ja lisäysjärjestämisen parhaita puolia. Introsort toimii aluksi kuten pikajärjestäminen ja sovelluksen toteutus hyödyntääkin samaa kolmen mediaania käyttävää pikajärjestämistä. Järjestettävän taulukon koon perusteella lasketaan ennen järjestämisen aloittamista pikajärjestämisen rekursiolle maksimisyvyys. Jos maksimisyvyys saavutetaan, osataulukossa pikajärjestäminen vaihdetaan kekojärjestämiseen, joka takaa O(n log(n)) aikavaativuuden. Mikäli järjestettävän osataulukon pituus on alle 16, se järjestetään käyttäen lisäysjärjestämistä. Suorituskykyvertailussa ainoastaan laskemisjärjestäminen pärjäsi varsinkin suurilla taulukoilla paremmin kuin introsort, mutta laskemisjärjestämisen käyttörajoitteet huomioon ottaen introsort vaikutti sovelluksen järjestämisalgoritmeista kaikkein käyttökelpoisimmalta vaihtoehdolta.
 
 [Wikipedia, Introsort](https://en.wikipedia.org/wiki/Introsort)
+
 [GeeksforGeeks, IntroSort](https://www.geeksforgeeks.org/introsort-or-introspective-sort/)
 
 ### Suorituskykyvertailu
